@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-box {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+            width: 300px;
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-box">
+        <h1>Login Form</h1>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username (min 5 characters)" required>
+            <input type="password" id="password" placeholder="Password (min 8 characters)" required>
+            <button type="submit">Submit</button>
+            <p id="error" class="error"></p>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('loginForm');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const errorElement = document.getElementById('error');
+
+        form.addEventListener('submit', (event) => {
+            errorElement.textContent = ''; // Clear previous error messages
+            const username = usernameInput.value;
+            const password = passwordInput.value;
+
+            if (username.length < 5) {
+                errorElement.textContent += 'Username must be at least 5 characters long. ';
+                event.preventDefault(); // Prevent form submission
+            }
+
+            if (password.length < 8) {
+                errorElement.textContent += 'Password must be at least 8 characters long. ';
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+    </script>
+</body>
+</html>

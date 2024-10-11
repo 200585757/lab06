@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Code and Value Display</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .key-display-box {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+            width: 300px;
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        #keyCode, #keyValue {
+            font-weight: bold;
+            font-size: 1.5em;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="key-display-box">
+        <h1>Press Any Key!</h1>
+        <p>Key Code: <span id="keyCode">0</span></p>
+        <p>Key Value: <span id="keyValue">None</span></p>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (event) => {
+            const keyCodeElement = document.getElementById('keyCode');
+            const keyValueElement = document.getElementById('keyValue');
+            keyCodeElement.textContent = event.keyCode;
+            keyValueElement.textContent = event.key;
+        });
+    </script>
+</body>
+</html>
